@@ -12,6 +12,7 @@ from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.requests import Request
 import json
 import os
 from pathlib import Path
@@ -220,6 +221,10 @@ async def dashboard(request: Request):
         "dashboard.html",
         {"request": request, "users": users_sorted},
     )
+
+def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
 
 if __name__ == "__main__":
     import uvicorn
