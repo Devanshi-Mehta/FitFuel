@@ -13,6 +13,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import json
+import os
 from pathlib import Path
 from datetime import datetime
 
@@ -219,5 +220,10 @@ async def dashboard(request: Request):
         "dashboard.html",
         {"request": request, "users": users_sorted},
     )
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # dynamic port
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
 
