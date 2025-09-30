@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health & Fitness Calculator</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Calorie & Macro Calculator</h1>
+        <p class="subtitle">Enter your details below. All units are metric.</p>
+
+        <!--
+          This form posts to /calculate on the server.
+          The server (FastAPI) will read the values, perform calculations,
+          and then render the results page for you.
+        -->
+        <form action="/calculate" method="post" class="card">
+            <div class="row">
+                <label for="name">Name (optional)</label>
+                <input id="name" name="name" type="text" placeholder="e.g., Devan" />
+            </div>
+            <div class="row">
+                <label for="height_cm">Height (cm)</label>
+                <input id="height_cm" name="height_cm" type="number" step="0.1" min="50" max="260" required />
+            </div>
+
+            <div class="row">
+                <label for="weight_kg">Weight (kg)</label>
+                <input id="weight_kg" name="weight_kg" type="number" step="0.1" min="20" max="400" required />
+            </div>
+
+            <div class="row">
+                <label for="age_years">Age (years)</label>
+                <input id="age_years" name="age_years" type="number" min="10" max="100" required />
+            </div>
+
+            <div class="row">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label for="activity_level">Activity level</label>
+                <select id="activity_level" name="activity_level" required>
+                    <!-- Keys match the backend mapping in activity_multiplier() -->
+                    <option value="sedentary">Sedentary (little or no exercise)</option>
+                    <option value="light">Light (1-3 days/week)</option>
+                    <option value="moderate">Moderate (3-5 days/week)</option>
+                    <option value="very">Very active (6-7 days/week)</option>
+                    <option value="extra">Extra active (very hard exercise/job)</option>
+                </select>
+            </div>
+
+            <div class="row" style="flex-direction: row; align-items: center; gap: 8px;">
+                <input id="save" name="save" type="checkbox" value="1" />
+                <label for="save">Save my details to dashboard</label>
+            </div>
+
+            <button type="submit" class="btn-primary">Calculate</button>
+        </form>
+
+        <footer>
+            <p class="footnote">
+                This tool uses the Mifflin-St Jeor equation for BMR and a simple
+                macro heuristic. For medical/clinical needs, consult a professional.
+            </p>
+        </footer>
+
+        <div class="actions" style="margin-top:12px;">
+            <a class="btn-secondary" href="/dashboard">Open dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
+
+

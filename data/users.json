@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Devanshi",
+    "timestamp": "2025-09-30T13:51:33.620527Z",
+    "inputs": {
+      "height_cm": 157.0,
+      "weight_kg": 57.0,
+      "age_years": 25,
+      "gender": "female",
+      "activity_level": "light"
+    },
+    "results": {
+      "calories": 1740,
+      "protein_g": 103,
+      "fat_g": 46,
+      "carb_g": 230,
+      "bmr": 1265,
+      "activity_multiplier": 1.375
+    }
+  },
+  {
+    "name": "Heenal",
+    "timestamp": "2025-09-30T13:52:13.361755Z",
+    "inputs": {
+      "height_cm": 156.0,
+      "weight_kg": 70.0,
+      "age_years": 29,
+      "gender": "female",
+      "activity_level": "light"
+    },
+    "results": {
+      "calories": 1882,
+      "protein_g": 126,
+      "fat_g": 56,
+      "carb_g": 219,
+      "bmr": 1369,
+      "activity_multiplier": 1.375
+    }
+  }
+]

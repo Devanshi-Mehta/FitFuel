@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>User Dashboard</h1>
+        <p class="subtitle">Saved entries appear here (newest first).</p>
+
+        <div class="actions" style="margin-bottom:12px;">
+            <a href="/" class="btn-secondary">Back to calculator</a>
+        </div>
+
+        {% if users and users|length > 0 %}
+            <div class="card">
+                <div class="results" style="grid-template-columns: 1fr; gap:8px;">
+                    {% for u in users %}
+                        <div class="result" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+                            <div style="display:flex; width:100%; justify-content: space-between;">
+                                <strong>{{ u.name }}</strong>
+                                <span class="footnote">{{ u.timestamp }}</span>
+                            </div>
+                            <div class="footnote">Inputs: {{ u.inputs.height_cm }} cm, {{ u.inputs.weight_kg }} kg, {{ u.inputs.age_years }} yrs, {{ u.inputs.gender }}, {{ u.inputs.activity_level }}</div>
+                            <div style="display:flex; gap: 12px; flex-wrap: wrap;">
+                                <span>Calories: <strong>{{ u.results.calories }}</strong></span>
+                                <span>Protein: <strong>{{ u.results.protein_g }} g</strong></span>
+                                <span>Carbs: <strong>{{ u.results.carb_g }} g</strong></span>
+                                <span>Fats: <strong>{{ u.results.fat_g }} g</strong></span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="card">
+                <p>No entries yet. Go to the calculator, check "Save my details", and submit.</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Results</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Your Daily Targets</h1>
+        <p class="subtitle">Calculated from your inputs and activity level.</p>
+
+        <div class="card">
+            <div class="results">
+                <div class="result"><span>Calories</span><strong>{{ result.calories }} kcal/day</strong></div>
+                <div class="result"><span>Protein</span><strong>{{ result.protein_g }} g/day</strong></div>
+                <div class="result"><span>Carbs</span><strong>{{ result.carb_g }} g/day</strong></div>
+                <div class="result"><span>Fats</span><strong>{{ result.fat_g }} g/day</strong></div>
+            </div>
+        </div>
+
+        <!-- Optional: Show a quick summary of inputs used -->
+        <div class="card compact">
+            <h3>Inputs used</h3>
+            <ul class="inputs-list">
+                {% if inputs.name %}<li>Name: {{ inputs.name }}</li>{% endif %}
+                <li>Height: {{ inputs.height_cm }} cm</li>
+                <li>Weight: {{ inputs.weight_kg }} kg</li>
+                <li>Age: {{ inputs.age_years }} years</li>
+                <li>Gender: {{ inputs.gender }}</li>
+                <li>Activity: {{ inputs.activity_level }} (x{{ result.activity_multiplier }})</li>
+                <li>BMR (for reference): {{ result.bmr }} kcal/day</li>
+            </ul>
+        </div>
+
+        <div class="actions">
+            <a href="/" class="btn-secondary">Back</a>
+            <a href="/dashboard" class="btn-secondary">Dashboard</a>
+        </div>
+
+        <footer>
+            <p class="footnote">
+                Protein and fats are estimated per kg body weight; carbs fill remaining calories.
+                {% if saved %}Your entry has been saved to the dashboard.{% endif %}
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
+
+
